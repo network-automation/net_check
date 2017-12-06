@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>Test</th>
+            <th>Rtr1</th>
+            <th>Rtr2</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for test_case in test_suite %}
+        <tr>
+            <td>{{test_case.name}}</td>
+            <td>{{test_case.name}}</td>
+            <td>{{test_case.name}}</td>
+            <!-- <td>{{hostvars[network_switch]['ansible_net_interfaces']['mgmt0']['ipv4']['address']}}</td>
+            <td {% if hostvars[network_switch]['ansible_net_version'] != desired_version %}style="background:yellow;"{% endif %}>{{hostvars[network_switch]['ansible_net_version']}}</td> -->
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
