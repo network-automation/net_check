@@ -11,6 +11,18 @@
       test2:
         name: "Tunnel0 interface up"
         result: Tunnel0
+      test3:
+        name: "Test reachability across tunnel rtr1->rtr2"
+        result: rtr1_to_rtr2
+      test4:
+        name: "Test reachability across tunnel rtr2->rtr1"
+        result: rtr2_to_rtr1
+      test5:
+        name: "Test reachability to ansible"
+        result: to_ansible
+      test6:
+        name: "Test reachability to host1"
+        result: to_host1
   tasks:
     - name: GigabitEthernet1 interface up
       net_interface:
