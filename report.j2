@@ -14,11 +14,9 @@
     </thead>
     <tbody>
 {% for test_case in test_suite %}
-{% set test_case_result = test_suite[test_case].result %}
-
         <tr>
             <td>{{test_suite[test_case].name}}</td>
-            <td>{{hostvars['rtr1'].test_case_result.GigabitEthernet1}}</td>
+            <td>{{hostvars['rtr1'].[test_suite[test_case].result].failed}}</td>
             <td>{{test_suite[test_case].name}}</td>
         </tr>
 {% endfor %}
