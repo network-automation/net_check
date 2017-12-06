@@ -52,13 +52,6 @@
       register: to_host1
       ignore_errors: yes
 
-    - set_fact:
-        GigabitEthernet1_combined: "{{GigabitEthernet1}}"
-        Tunnel0_combined: "{{Tunnel0}}"
-
-    - debug:
-        var: hostvars['host1'].GigabitEthernet1
-
     - name: create HTML report
       template:
         src: report.j2
@@ -66,13 +59,13 @@
       delegate_to: localhost
       run_once: true
 
-    - name: debug outputs
-      debug:
-        var: "{{item}}"
-      with_items:
-        - GigabitEthernet1
-        - Tunnel0
-        - rtr1_to_rtr2
-        - rtr2_to_rtr1
-        - to_ansible
-        - to_host1
+    # - name: debug outputs
+    #   debug:
+    #     var: "{{item}}"
+    #   with_items:
+    #     - GigabitEthernet1
+    #     - Tunnel0
+    #     - rtr1_to_rtr2
+    #     - rtr2_to_rtr1
+    #     - to_ansible
+    #     - to_host1

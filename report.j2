@@ -16,7 +16,7 @@
 {% for test_case in test_suite %}
         <tr>
             <td>{{test_suite[test_case].name}}</td>
-            <td>{{test_suite[test_case].result}}</td>
+            <td>{{hostvars['rtr1']["test_suite[test_case].failed"]}}</td>
             <td>{{test_suite[test_case].name}}</td>
         </tr>
 {% endfor %}
