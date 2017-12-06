@@ -53,8 +53,8 @@
       ignore_errors: yes
 
     - set_fact:
-        GigabitEthernet1_combined: GigabitEthernet1
-        Tunnel0_combined: Tunnel0
+        GigabitEthernet1_combined: "{{GigabitEthernet1}}"
+        Tunnel0_combined: "{{Tunnel0}}"
 
     - debug:
         var: GigabitEthernet1_combined
@@ -62,7 +62,7 @@
     - name: create HTML report
       template:
         src: report.j2
-        dest: generated_report.html
+        dest: ./generated_report.html
       delegate_to: localhost
       run_once: true
 
