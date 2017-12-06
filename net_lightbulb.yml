@@ -57,7 +57,7 @@
         Tunnel0_combined: "{{Tunnel0}}"
 
     - debug:
-        var: GigabitEthernet1_combined
+        var: hostvars['host1'].GigabitEthernet1
 
     - name: create HTML report
       template:
