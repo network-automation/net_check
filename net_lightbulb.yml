@@ -52,6 +52,10 @@
       register: to_host1
       ignore_errors: yes
 
+    - name: debug GigabitEthernet1 for rtr1
+      debug:
+        var: hostvars[`rtr1`].GigabitEthernet1
+
     - name: create HTML report
       template:
         src: report.j2
