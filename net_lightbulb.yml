@@ -21,38 +21,31 @@
 
     - name: Test reachability across tunnel rtr1->rtr2
       net_ping:
-        dest: "{{hostvars['rtr2']['ansible_host']}}"
+        dest: "10.0.0.2"
       when: inventory_hostname == "rtr1"
       register: test3
       ignore_errors: yes
 
     - name: Test reachability across tunnel rtr2->rtr1
       net_ping:
-        dest: "{{hostvars['rtr1']['ansible_host']}}"
+        dest: "10.0.0.1"
       when: inventory_hostname == "rtr2"
       register: test4
       ignore_errors: yes
 
     - name: Test reachability to ansible
       net_ping:
-        dest: "{{hostvars['ansible']['ansible_host']}}"
+        dest: "{{hostvars['ansible']['private_ip']}}"
       register: test5
       ignore_errors: yes
 
     - name: Test reachability to host1
       net_ping:
-        dest: "{{hostvars['host1']['ansible_host']}}"
+        dest: "{{hostvars['host1']['private_ip']}}"
       register: test6
       ignore_errors: yes
 
-    - name: create HTML report 1/2
-      template:
-        src: report01.j2
-        dest: ./generated_report01.html
-      delegate_to: localhost
-      run_once: true
-
-    - name: create HTML report 2.2
+    - name: create HTML report
       template:
         src: report.j2
         dest: ./generated_report.html
