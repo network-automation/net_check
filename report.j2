@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-{% set pass_fail_rtr1 = hostvars[rtr1].GigabitEthernet1 %}
+{% set pass_fail_rtr1 = hostvars[`rtr1`].GigabitEthernet1 %}
 {{ pass_fail_rtr1 }}
 <!-- {% for test_case in test_suite %}
 {% set pass_fail_rtr1 = hostvars['rtr1'][test_suite[test_case].result]["failed"] %}
