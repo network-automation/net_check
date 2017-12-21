@@ -19,8 +19,8 @@
 {% for test_case in test_suite %}
         <tr>
             <td>{{test_suite[test_case].name}}</td>
-            <td>{% if hostvars['rtr1'][test_case]["failed"] == false %}Test Passed{% endif %}</td>
-            <td>{% if hostvars['rtr2'][test_case]["failed"] == false %}Test Passed{% endif  %}</td>
+            <td>{% if hostvars['rtr1'][test_case]["skipped"] is defined %} N/A {% elif hostvars['rtr1'][test_case]["failed"] == false %}Test Passed{% endif %}</td>
+            <td>{% if hostvars['rtr2'][test_case]["skipped"] is defined %} N/A {% elif hostvars['rtr2'][test_case]["failed"] == false %}Test Passed{% endif  %}</td>
         </tr>
 {% endfor %}
 
