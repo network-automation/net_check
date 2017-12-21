@@ -4,64 +4,45 @@
   connection: local
   vars:
     ansible_network_os: ios
-    test_suite:
-      test1:
-        name: "GigabitEthernet1 interface up"
-        result: GigabitEthernet1
-      test2:
-        name: "Tunnel0 interface up"
-        result: Tunnel0
-      test3:
-        name: "Test reachability across tunnel rtr1->rtr2"
-        result: rtr1_to_rtr2
-      test4:
-        name: "Test reachability across tunnel rtr2->rtr1"
-        result: rtr2_to_rtr1
-      test5:
-        name: "Test reachability to ansible"
-        result: to_ansible
-      test6:
-        name: "Test reachability to host1"
-        result: to_host1
   tasks:
     - name: GigabitEthernet1 interface up
       net_interface:
         name: GigabitEthernet1
         state: up
-      register: GigabitEthernet1
+      register: test1
       ignore_errors: yes
 
     - name: Tunnel0 interface up
       net_interface:
         name: Tunnel0
         state: up
-      register: Tunnel0
+      register: test2
       ignore_errors: yes
 
     - name: Test reachability across tunnel rtr1->rtr2
       net_ping:
         dest: "{{hostvars['rtr2']['ansible_host']}}"
       when: inventory_hostname == "rtr1"
-      register: rtr1_to_rtr2
+      register: test3
       ignore_errors: yes
 
     - name: Test reachability across tunnel rtr2->rtr1
       net_ping:
         dest: "{{hostvars['rtr1']['ansible_host']}}"
       when: inventory_hostname == "rtr2"
-      register: rtr2_to_rtr1
+      register: test4
       ignore_errors: yes
 
     - name: Test reachability to ansible
       net_ping:
         dest: "{{hostvars['ansible']['ansible_host']}}"
-      register: to_ansible
+      register: test5
       ignore_errors: yes
 
     - name: Test reachability to host1
       net_ping:
         dest: "{{hostvars['host1']['ansible_host']}}"
-      register: to_host1
+      register: test6
       ignore_errors: yes
 
     - name: create HTML report
@@ -75,9 +56,9 @@
     #   debug:
     #     var: "{{item}}"
     #   with_items:
-    #     - GigabitEthernet1
-    #     - Tunnel0
-    #     - rtr1_to_rtr2
-    #     - rtr2_to_rtr1
-    #     - to_ansible
-    #     - to_host1
+    #     - test1
+    #     - test2
+    #     - test3
+    #     - test4
+    #     - test5
+    #     - test6

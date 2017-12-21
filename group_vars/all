@@ -1,0 +1,14 @@
+---
+   test_suite:
+     test1:
+       name: "GigabitEthernet1 interface up"
+     test2:
+       name: "Tunnel0 interface up"
+     test3:
+       name: "Test reachability across tunnel rtr1->rtr2"
+     test4:
+       name: "Test reachability across tunnel rtr2->rtr1"
+     test5:
+       name: "Test reachability to ansible"
+     test6:
+       name: "Test reachability to host1"

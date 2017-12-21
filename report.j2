@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-{% set pass_fail_rtr1 = hostvars['rtr1'].GigabitEthernet1 %}
+{% set pass_fail_rtr1 = hostvars['rtr1'].test1["failed"] %}
 {{ pass_fail_rtr1 }}
     </tbody>
 </table>
