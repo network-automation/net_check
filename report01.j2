@@ -13,7 +13,14 @@
         </tr>
     </thead>
     <tbody>
-{{hostvars['rtr1'].test1["failed"] }}
+
+{% for test_case in test_suite %}
+        <tr>
+            <td>{{test_suite[test_case].name}}</td>
+            <td>{{ if hostvars['rtr1'][test_case]}}</td>
+            <td>{{ if hostvars['rtr2'][test_case]}}</td>
+        </tr>
+{% endfor %}
 
     </tbody>
 </table>
