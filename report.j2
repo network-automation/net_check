@@ -13,12 +13,15 @@
         </tr>
     </thead>
     <tbody>
-{% set pass_fail_rtr1 = hostvars['rtr1'].test1["failed"] %}
-{{ pass_fail_rtr1 }}
-{{ test_suite.test1 }}
+{{hostvars['rtr1'].test1["failed"] }}
+
 
 {% for test_case in test_suite %}
-{{test_case}}
+        <tr>
+            <td>{{test_suite[test_case].name}}</td>
+            <td>{% if hostvars['rtr1'].test_case["failed"] == false %}Test Passed{% endif %}</td>
+            <td>{% if hostvars['rtr2'].test_case["failed"] == false %}Test Passed{% endif  %}</td>
+        </tr>
 {% endfor %}
 
     </tbody>
