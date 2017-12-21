@@ -45,7 +45,14 @@
       register: test6
       ignore_errors: yes
 
-    - name: create HTML report
+    - name: create HTML report 1/2
+      template:
+        src: report01.j2
+        dest: ./generated_report01.html
+      delegate_to: localhost
+      run_once: true
+
+    - name: create HTML report 2.2
       template:
         src: report.j2
         dest: ./generated_report.html
